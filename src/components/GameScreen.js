@@ -17,9 +17,9 @@ function GameScreen({ onBackToMenu }) {
 
                 <div className='bottom-bar'>
                     <button className='reset-button' onClick={onBackToMenu}>
-                        🔙 메인으로
+                        메인 화면
                     </button>
-                    <button className='bgm-toggle-button'>🔊 BGM</button>
+                    <button className='bgm-toggle-button'>🔊 BGM On/Off</button>
                 </div>
             </div>
         </div>

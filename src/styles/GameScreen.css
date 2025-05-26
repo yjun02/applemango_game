@@ -13,7 +13,7 @@
     width: 94vw;
     max-width: 1100px;
     min-width: 780px; /* ✅ 최소 너비 지정 */
-    aspect-ratio: 16 / 10; /* 또는 16 / 9도 가능 */
+    aspect-ratio: 16 / 11; /* 또는 16 / 9도 가능 */
     background-color: #fff8e1;
     border-radius: 20px;
     border: 3px dashed #ffe89b;
@@ -78,10 +78,10 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.15s;
 }
 
 .reset-button:hover,
 .bgm-toggle-button:hover {
-    background-color: #ffca28;
+    background-color: #ddae22;
 }

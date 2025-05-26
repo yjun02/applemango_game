@@ -150,7 +150,7 @@ const GameBoard = ({ setScore, isGameOver }) => {
                 const cx = rect.left + col * cellWidth + cellWidth / 2;
                 const cy = rect.top + row * cellHeight + cellHeight / 2;
 
-                if (cx >= x1 && cx <= x2 && cy >= y1 && cy <= y2) {
+                if (cx + 5 >= x1 && cx - 5 <= x2 && cy + 5 >= y1 && cy - 5 <= y2) {
                     selected.add(`${row},${col}`);
                 }
             }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/GameScreen.css';
 import GameBoard from './GameBoard';
 
-const TIMELIMIT = 120; // 시간제한 설정
+const TIMELIMIT = 120; // 시간제한 설정 (기본값 120)
 
 function GameScreen({ onBackToMenu }) {
     const [score, setScore] = useState(0);
@@ -51,7 +51,7 @@ function GameScreen({ onBackToMenu }) {
                     <button className='reset-button' onClick={onBackToMenu}>
                         메인 화면
                     </button>
-                    <button className='bgm-toggle-button'>🔊 BGM On/Off</button>
+                    {/* <button className='bgm-toggle-button'>🔊 BGM On/Off</button> */}
                 </div>
             </div>
             {isGameOver && (

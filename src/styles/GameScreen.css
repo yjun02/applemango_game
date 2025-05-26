@@ -6,6 +6,7 @@
     background-color: #fffefc;
     padding: 0;
     margin: 0;
+    user-select: none;
 }
 
 .game-container {
@@ -16,7 +17,7 @@
     aspect-ratio: 16 / 11; /* 또는 16 / 9도 가능 */
     background-color: #fff3ce;
     border-radius: 20px;
-    border: 3px dashed #ffe89b;
+    border: 4px dashed #ffd9a0;
     overflow: hidden;
     display: flex;
     flex-direction: column;

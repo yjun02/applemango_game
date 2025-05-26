@@ -6,6 +6,9 @@
     width: 97%;
     height: 95%;
     padding: 0;
+    position: relative;
+    touch-action: none;
+    overflow: visible;
 }
 
 .board-cell {
@@ -17,6 +20,16 @@
     justify-content: center;
     font-weight: bold;
     color: #df6400;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     user-select: none;
+}
+
+.board-cell.selected {
+    background-color: #ffebda;
+    border: 3px solid #ff7e4b;
+}
+
+.selection-box {
+    border: 2px solid #a1a1a19c;
+    pointer-events: none;
 }

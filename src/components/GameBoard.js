@@ -2,9 +2,11 @@ import React, { useEffect, useState, useRef } from 'react';
 import SelectionBoxPortal from './SelectionBoxPortal';
 import '../styles/GameBoard.css';
 
+// 세로, 가로줄 수 설정 (기본값 10*17)
 const ROWS = 10;
 const COLS = 17;
 
+// 랜덤 그리드 추가 함수
 function generateRandomGrid() {
     const grid = [];
     for (let row = 0; row < ROWS; row++) {
@@ -17,11 +19,12 @@ function generateRandomGrid() {
     return grid;
 }
 
-const GameBoard = ({ setScore }) => {
+const GameBoard = ({ setScore, isGameOver }) => {
     const [grid, setGrid] = useState([]);
     const [dragStartCoord, setDragStartCoord] = useState(null);
     const [dragEndCoord, setDragEndCoord] = useState(null);
     const [selectedCells, setSelectedCells] = useState(new Set());
+    const [fadingCells, setFadingCells] = useState(new Set());
     const boardRef = useRef(null);
 
     useEffect(() => {
@@ -47,7 +50,16 @@ const GameBoard = ({ setScore }) => {
     const isDraggingRef = useRef(false);
 
     useEffect(() => {
+        if (isGameOver) {
+            // 게임 종료 시 드래그 중단 및 선택 초기화
+            setDragStartCoord(null);
+            setDragEndCoord(null);
+            setSelectedCells(new Set());
+            isDraggingRef.current = false;
+            return;
+        }
         const handlePointerDown = (e) => {
+            if (isGameOver) return;
             e.preventDefault();
             isDraggingRef.current = true;
             setDragStartCoord({ x: e.clientX, y: e.clientY });
@@ -55,12 +67,14 @@ const GameBoard = ({ setScore }) => {
         };
 
         const handlePointerMove = (e) => {
+            if (isGameOver) return;
             if (!isDraggingRef.current) return;
             e.preventDefault();
             setDragEndCoord({ x: e.clientX, y: e.clientY });
         };
 
         const handlePointerUp = (e) => {
+            if (isGameOver) return;
             if (!isDraggingRef.current) return;
             e.preventDefault();
 
@@ -71,15 +85,24 @@ const GameBoard = ({ setScore }) => {
             });
 
             if (sum === 10 && selectedCells.size > 0) {
-                setScore((prev) => prev + selectedCells.size);
-                setGrid((prevGrid) => {
-                    const newGrid = prevGrid.map((row) => [...row]);
-                    selectedCells.forEach((key) => {
-                        const [r, c] = key.split(',').map(Number);
-                        newGrid[r][c] = 0;
+                const toRemove = new Set(selectedCells);
+                setFadingCells(toRemove);
+
+                setTimeout(() => {
+                    setScore((prev) => prev + toRemove.size);
+                    setGrid((prevGrid) => {
+                        const newGrid = prevGrid.map((row) => [...row]);
+                        toRemove.forEach((key) => {
+                            const [r, c] = key.split(',').map(Number);
+                            newGrid[r][c] = 0;
+                        });
+                        return newGrid;
                     });
-                    return newGrid;
-                });
+                    setFadingCells(new Set());
+                }, 500); // 애니메이션 후 제거
+
+                // 초기화
+                setSelectedCells(new Set());
             }
 
             isDraggingRef.current = false;
@@ -99,7 +122,7 @@ const GameBoard = ({ setScore }) => {
             window.removeEventListener('pointerup', handlePointerUp);
             window.removeEventListener('pointercancel', handlePointerUp);
         };
-    }, [selectedCells, grid, setScore]);
+    }, [selectedCells, grid, setScore, isGameOver]);
 
     // 선택 셀 계산 (드래그 좌표 → 셀 중심 포함 여부)
     useEffect(() => {
@@ -141,15 +164,21 @@ const GameBoard = ({ setScore }) => {
     }, [dragStartCoord, dragEndCoord, selectedCells]);
 
     return (
-        <div className='game-board' ref={boardRef}>
+        <div
+            className='game-board'
+            ref={boardRef}
+            style={{
+                gridTemplateColumns: `repeat(${COLS}, 1fr)`,
+                gridTemplateRows: `repeat(${ROWS}, 1fr)`,
+            }}>
             {/* grid 렌더링 */}
             {grid.map((row, rowIndex) =>
                 row.map((number, colIndex) => {
                     const key = `${rowIndex},${colIndex}`;
                     const isSelected = selectedCells.has(key);
                     return (
-                        <div key={key} className={`board-cell ${isSelected ? 'selected' : ''}`}>
-                            {number}
+                        <div key={key} className={`board-cell ${isSelected ? 'selected' : ''} ${fadingCells.has(key) ? 'fade-out' : ''}`}>
+                            {number !== 0 ? number : ''}
                         </div>
                     );
                 })

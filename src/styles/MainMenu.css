@@ -8,7 +8,7 @@
 }
 
 .title {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 2rem;
     color: #ffa726;
     font-weight: bold;
@@ -16,7 +16,7 @@
 
 .start-button {
     padding: 1rem 2rem;
-    font-size: 1.2rem;
+    font-size: 2rem;
     background-color: #ffb300;
     color: white;
     border: none;

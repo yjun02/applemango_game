@@ -34,9 +34,10 @@
 }
 
 .timer-bar {
+    width: 100%;
     flex: 1;
     height: 20px;
-    background-color: #ffe0b2;
+    background-color: #ffd89a;
     border-radius: 10px;
     overflow: hidden;
     margin-right: 1rem;
@@ -44,8 +45,9 @@
 
 .timer-fill {
     height: 100%;
-    background-color: #ffb74d;
+    background-color: #f7ad3e;
     transition: width 1s linear;
+    width: 100%; /* 초기값 */
 }
 
 .score-display {
@@ -82,7 +84,40 @@
     transition: background-color 0.15s;
 }
 
+.game-over-screen button {
+    margin-top: 20px;
+    padding: 20px 50px;
+    font-size: 2.5rem;
+    cursor: pointer;
+
+    border: none;
+    border-radius: 15px;
+    background-color: #ebba26;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
 .reset-button:hover,
-.bgm-toggle-button:hover {
-    background-color: #ddae22;
+.bgm-toggle-button:hover,
+.game-over-screen button:hover {
+    background-color: #c79d1f;
+}
+
+.game-over-screen {
+    position: absolute; /* 부모가 position: relative여야 함 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 3rem;
+    z-index: 100; /* 충분히 높은 값으로 다른 요소 위에 보이게 */
+    user-select: none;
 }

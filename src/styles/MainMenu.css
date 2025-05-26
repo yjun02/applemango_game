@@ -4,21 +4,22 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #fff7e6;
+    background-color: var(--mainBackground);
+    user-select: none;
 }
 
 .title {
     font-size: 4rem;
     margin-bottom: 2rem;
-    color: #ffa726;
+    color: var(--mainTitle);
     font-weight: bold;
 }
 
 .start-button {
     padding: 1rem 2rem;
     font-size: 2rem;
-    background-color: #ffb300;
-    color: white;
+    background-color: var(--mainTitle);
+    color: var(--mainBackground);
     border: none;
     border-radius: 12px;
     cursor: pointer;
@@ -26,5 +27,5 @@
 }
 
 .start-button:hover {
-    background-color: #ffa000;
+    background-color: var(--mainTitle-h);
 }

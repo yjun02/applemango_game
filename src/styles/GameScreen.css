@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #fffefc;
+    background-color: var(--mainBackground);
     padding: 0;
     margin: 0;
     user-select: none;
@@ -15,9 +15,9 @@
     max-width: 1100px;
     min-width: 780px; /* ✅ 최소 너비 지정 */
     aspect-ratio: 16 / 11; /* 또는 16 / 9도 가능 */
-    background-color: #fff3ce;
+    background-color: #ffeccd;
     border-radius: 20px;
-    border: 4px dashed #ffd9a0;
+    border: 4px dashed #ffd99d;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -45,7 +45,7 @@
 
 .timer-fill {
     height: 100%;
-    background-color: #f7ad3e;
+    background-color: var(--mainTitle);
     transition: width 1s linear;
     width: 100%; /* 초기값 */
 }
@@ -53,7 +53,7 @@
 .score-display {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ff9800;
+    color: var(--mainTitle);
 }
 
 .game-board-placeholder {
@@ -75,9 +75,9 @@
 .reset-button,
 .bgm-toggle-button {
     padding: 0.5rem 1.2rem;
-    font-size: 1rem;
-    background-color: #ffd54f;
-    color: #5d4037;
+    font-size: 1.2rem;
+    background-color: var(--mainTitle);
+    color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -89,18 +89,17 @@
     padding: 20px 50px;
     font-size: 2.5rem;
     cursor: pointer;
-
     border: none;
     border-radius: 15px;
-    background-color: #ebba26;
-    color: white;
+    background-color: var(--mainTitle);
+    color: var(--mainBackground);
     transition: background-color 0.3s ease;
 }
 
 .reset-button:hover,
 .bgm-toggle-button:hover,
 .game-over-screen button:hover {
-    background-color: #c79d1f;
+    background-color: var(--mainTitle-h);
 }
 
 .game-over-screen {
@@ -109,15 +108,13 @@
     left: 0;
     width: 100%;
     height: 100%;
-
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    color: white;
+    color: var(--mainBackground);
     font-size: 3rem;
-    z-index: 100; /* 충분히 높은 값으로 다른 요소 위에 보이게 */
+    z-index: 100;
     user-select: none;
 }

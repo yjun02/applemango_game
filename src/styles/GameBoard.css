@@ -10,26 +10,26 @@
 }
 
 .board-cell {
-    background-color: #fff7ea;
-    border: 2px solid #ffd9a0;
-    border-radius: 10px;
+    background-color: var(--mainBackground);
+    border: 3px solid var(--mainTitle);
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    color: #df6400;
-    font-size: 1.5rem;
+    color: #ff6f2c;
+    font-size: 1.8rem;
     user-select: none;
-    transition: background-color 0.3s, transform 0.5s, opacity 0.5s;
+    transition: background-color 0.2s, transform 0.3s, opacity 0.3s;
 }
 
 .board-cell.selected {
-    background-color: #ffebda;
+    background-color: #ffe2c8;
     border: 3px solid #ff7e4b;
 }
 
 .selection-box {
-    border: 2px solid #a1a1a19c;
+    border: 2px solid #00000071;
     pointer-events: none;
 }
 

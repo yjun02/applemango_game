@@ -1,3 +1,14 @@
+:root {
+    --mainBackground: #fff7e6;
+    --mainTitle: #ffa42d;
+    --mainTitle-h: #eb9a21;
+}
+
+html {
+    user-select: none;
+    outline: none;
+}
+
 .App {
     text-align: center;
     user-select: none;

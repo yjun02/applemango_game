@@ -14,7 +14,7 @@
     max-width: 1100px;
     min-width: 780px; /* ✅ 최소 너비 지정 */
     aspect-ratio: 16 / 11; /* 또는 16 / 9도 가능 */
-    background-color: #fff8e1;
+    background-color: #fff3ce;
     border-radius: 20px;
     border: 3px dashed #ffe89b;
     overflow: hidden;
